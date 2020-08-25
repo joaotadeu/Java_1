@@ -1,0 +1,10 @@
+package bytebank;
+
+class Conta {
+
+	double saldo;
+	double agencia;
+	int numero;
+	String titular;
+	
+}
