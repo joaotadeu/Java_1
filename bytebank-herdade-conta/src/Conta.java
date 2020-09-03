@@ -28,32 +28,19 @@ public class Conta {
 		System.out.println("O valor depositado foi " + valor);
 	}
 
-	public boolean saca(double valor){
-		if (this.saldo >= valor) {
-		this.saldo -= valor;
-
-			System.out.println("O Valor sacado foi: " + valor);
-
-			return true;
-		} else {
-			System.out.println("Você não tem valor disponivel para saque!");
-			return false;
+	public void saca(double valor) throws SaldoInsuficienteException {
+		
+		if (this.saldo < valor){
+			throw new SaldoInsuficienteException("Saldo: " + this.saldo + ", Valor: " + valor);
+			
 		}
+			System.out.println("O Valor sacado foi: " + valor);
 
 	}
 
-	public boolean transfere(double valor, Conta destino) {
-		if (this.saldo >= valor) {
-			this.saldo -= valor;
-			destino.deposita(valor);
-
-			System.out.println("o Valor tranferido foi: " + valor);
-			return true;
-		} else {
-
-			System.out.println("Valor não tranferido");
-			return false;
-		}
+	public void transfere(double valor, Conta destino) throws SaldoInsuficienteException {
+		this.saca(valor);
+		destino.deposita(valor);
 	}
 	public double getSaldo() {
 		return this.saldo;

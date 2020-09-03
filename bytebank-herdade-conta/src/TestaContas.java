@@ -1,7 +1,7 @@
 
 public class TestaContas {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SaldoInsuficienteException {
 		ContaCorrente cc = new ContaCorrente(2091, 2142765-1);
 		cc.deposita(100.0);
 		System.out.println("o Saldo da Conta corrente é: " + cc.getSaldo());
